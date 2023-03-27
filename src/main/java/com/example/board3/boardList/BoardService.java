@@ -34,4 +34,8 @@ public class BoardService {
 		boardMapper.deleteBoard(boardNum);
 	}
 
+	public List<BoardVO> searchTitle(String title) {
+		return boardMapper.searchTitle(title);
+	}
+
 }

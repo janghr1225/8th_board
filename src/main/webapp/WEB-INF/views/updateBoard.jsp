@@ -7,7 +7,7 @@
 <title>게시글 수정</title>
 </head>
 <body>
-	<form action="/board/update" method="post">
+	<form action="/board/update/{boardNum}" method="post">
 		<input type="hidden" name="boardNum" value="${boardVO.boardNum}"/>
 		<div>
 			<label for="userName">작성자</label>

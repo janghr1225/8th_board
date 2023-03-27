@@ -11,7 +11,7 @@
    </select>
    
    <select id="getDetail" resultType="BoardVO">
-	  SELECT userName,title,content,creDate 
+	  SELECT boardNum,userName,title,content,creDate 
 	  FROM board 
 	  WHERE boardNum=#{boardNum}
    </select>
@@ -35,5 +35,13 @@
    	  DELETE FROM board
    	  WHERE boardNum = #{boardNum}
    </delete>
+   
+   <select id="searchTitle" parameterType="String">
+   	  SELECT boardNum,userName,title,content,creDate 
+   	  FROM board
+   	  WHERE
+   	  title LIKE CONCAT('%',#{title},'%')
+   	  ORDER BY boardNum DESC
+   </select>
 
 </mapper>

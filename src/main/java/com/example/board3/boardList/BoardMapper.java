@@ -17,5 +17,7 @@ public interface BoardMapper {
 
 	void deleteBoard(Integer boardNum);
 
+	List<BoardVO> searchTitle(String title);
+
 	
 }
