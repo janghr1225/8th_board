@@ -48,17 +48,22 @@ public class BoardController {
 	}
 
 	// 수정
-	@PostMapping("/update/{boardNum}") 
-	public String updateBoard(BoardVO boardVO, @PathVariable("boardNum") Integer boardNum) { 
-		boardService.updateBoard(boardVO); 
-		return "redirect:/board/list"; 
+	@GetMapping("/update/{boardNum}") 
+	public String updateBoard(Model model, @PathVariable("boardNum") Integer boardNum) { 
+		BoardVO boardVO =  boardService.getDetail(boardNum);
+		model.addAttribute("boardVO", boardVO);
+		return "updateBoard"; 
 	}
-//	@PostMapping("/update") 
-//	public String updateBoard(BoardVO boardVO) { 
+//	@PostMapping("/update/{boardNum}") 
+//	public String updateBoard(BoardVO boardVO, @PathVariable("boardNum") Integer boardNum) { 
 //		boardService.updateBoard(boardVO); 
-//		return "redirect:/board/list"; 
+//		return "boardDetail"; 
 //	}
-	
+	@PostMapping("/update") 
+	public String updateBoard(BoardVO boardVO) { 
+		boardService.updateBoard(boardVO); 
+		return "boardDetail"; 
+	}
 	@GetMapping("/updatePopup/{boardNum}")
 	public String popupUpdate(Model model, @PathVariable("boardNum") Integer boardNum) {
 		BoardVO boardVO = boardService.getDetail(boardNum);

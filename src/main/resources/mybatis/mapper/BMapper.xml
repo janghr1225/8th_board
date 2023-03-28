@@ -22,7 +22,7 @@
    </insert>
    
    <update id="updateBoard" parameterType="BoardVO">
-   	  UPDATE board(userName,title,content,creDate)
+   	  UPDATE board
    	  SET
    	  		userName = #{userName},
    	  		title = #{title},

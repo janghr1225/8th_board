@@ -25,9 +25,8 @@ public class BoardService {
 		boardMapper.insertBoard(boardVO);		
 	}
 
-	public String updateBoard(BoardVO boardVO) {
-		return boardMapper.updateBoard(boardVO);
-		//return boardVO;
+	public void updateBoard(BoardVO boardVO) {
+		boardMapper.updateBoard(boardVO);
 	}
 
 	public void deleteBoard(Integer boardNum) {

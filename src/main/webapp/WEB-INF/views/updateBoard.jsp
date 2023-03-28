@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -7,8 +7,11 @@
 <title>게시글 수정</title>
 </head>
 <body>
-	<form action="/board/update/{boardNum}" method="post">
-		<input type="hidden" name="boardNum" value="${boardVO.boardNum}"/>
+	<form action="/board/update" method="post">
+		<div>
+			<label for="boardNum">글번호</label>
+			<input type="number" name="boardNum" readonly value="${boardVO.boardNum}"/>
+		</div>	
 		<div>
 			<label for="userName">작성자</label>
 			<input type="text" name="userName" value="${boardVO.userName}"/>
@@ -20,10 +23,10 @@
 		
 		<div>
 			<label for="content">내용</label>
-			<textarea type="text" name="content" value="${boardVO.content}"></textarea>
+			<textarea name="content">${boardVO.content}</textarea>
 		</div>
 		
-		<button type="submit">수정하기</button>
+		<button type="submit" value="update">수정하기</button>
 	</form>
 </body>
 </html>

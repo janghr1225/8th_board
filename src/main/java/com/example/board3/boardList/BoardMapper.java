@@ -13,7 +13,8 @@ public interface BoardMapper {
 
 	void insertBoard(BoardVO boardVO);
 
-	String updateBoard(BoardVO boardVO);
+//	String updateBoard(BoardVO boardVO);
+	void updateBoard(BoardVO boardVO);
 
 	void deleteBoard(Integer boardNum);
 

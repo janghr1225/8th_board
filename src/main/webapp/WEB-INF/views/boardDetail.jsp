@@ -36,8 +36,7 @@
 	<button onclick="openPop()">수정</button>
 
 	<script type="text/javascript">
-	/* 
-		let num =  */
+	/*  let num =  */
 		
 		let windowOpen = '/board/update/'+ ${boardVO.boardNum};
 	 	function openPop() {
