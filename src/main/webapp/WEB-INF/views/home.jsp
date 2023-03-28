@@ -21,7 +21,7 @@
 		</form>
 		
 		<button type="button" id="deleteBoardId" name="deletBoard" class="delMulti">선택삭제</button>
-		<button onclick="openPop()" name = "boardBtn">게시글 등록하기</button>
+		<button onclick="openPop('/board/insertPopup')" name = "boardBtn">게시글 등록하기</button>
 		
 		<table border="1">
 			<thead>
@@ -39,7 +39,7 @@
 					<tr>
 						<td><input type="checkbox" name="oneCheck" id="oneCheckId" class="check" ></td>
 						<td>${board.size() - status.count + 1}</td>
-						<td><a href="/board/list/${n.boardNum}">${n.title}</a></td>
+						<td><a onclick="openPop('/board/list/${n.boardNum}')">${n.title}</a></td>
 						<td>${n.userName}</td>
 						<td>${n.creDate}</td>
 						<td><a href="/board/delete/${n.boardNum}">삭제</a></td>
@@ -51,8 +51,8 @@
 
 	<script type="text/javascript">
 	
-	 	function openPop() {
-			var pop = window.open('/board/insertPopup','등록하기','width=600,height=600,left=10,top=10');
+	 	function openPop(openURL) {			
+	 		var pop = window.open(openURL,'등록하기','width=600,height=600,left=10,top=10');		
 		}
 	 	
 	 	//렌더링 함수
@@ -60,7 +60,7 @@
 	 		$('#board').load(location.href + '#board');
 	 	}
 	 	
-	 	//checkbox전체선택
+	 	//checkbox 전체선택
  		$("#allCheckId").click(function(){
  			if($("#allCheckId").is(":checked")){
  				$("input[name=oneCheck]").prop("checked", true);
@@ -68,7 +68,7 @@
  				$("input[name=oneCheck]").prop("checked", false);
  			}
  		});
-	 	//checkbox전체선택 해제
+	 	//checkbox 전체선택 해제
 	 	$("#oneCheckId").click(function(){
 	 		var total = $("input[name=oneCheck]").length;
 			var checked = $("input[name=oneCheck]:checked").length;

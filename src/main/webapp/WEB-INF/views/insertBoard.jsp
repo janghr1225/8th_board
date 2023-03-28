@@ -28,7 +28,7 @@
 	</form>
 	
 	<button id="send">등록</button>
-	<!-- 동기 처리 비동기처리 => submit을 눌렀을 떄 onclick 함수 실행이 먼저냐 아니면 submit이 먼저냐, 그 실행이 항상 보장 되는지 -->
+	<!-- 동기 처리 비동기처리 => submit을 눌렀을 떄 onclic 함수 실행이 먼저인지 아니면 submit이 먼저인지, 그 실행 순서는 항상 보장 되는지 -->
 	
 	<script>
 		function register() {
@@ -41,6 +41,7 @@
 					content : $("textarea[name=content]").val(),
 					title : $("input[name=title]").val()
 			}
+			
 			$.ajax({		/* 비동기처리 */
 				type : 'post',
 				url : '/board/insert',

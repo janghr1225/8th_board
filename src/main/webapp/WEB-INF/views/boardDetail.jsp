@@ -28,19 +28,16 @@
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><input type="text" name="content" readonly value="${boardVO.content}"/></td>
+				<td><textarea name="content" readonly>${boardVO.content}</textarea></td>
 			</tr>
 		</tbody>
 	</table>
 	
-	<button onclick="openPop()">수정</button>
+	<button onclick="openPop()">수정하기</button>
 
 	<script type="text/javascript">
-	/*  let num =  */
-		
-		let windowOpen = '/board/update/'+ ${boardVO.boardNum};
 	 	function openPop() {
-			var pop = window.open(windowOpen,'수정하기','width=600,height=600,left=10,top=10');
+			var pop = window.open('/board/update/'+ ${boardVO.boardNum},'수정하기','width=600,height=600,left=10,top=10');
 		} 
 	
 	</script>

@@ -84,13 +84,12 @@ public class BoardController {
 		return "redirect:/board/list"; // redirect 쓰지 말고 비동기로 다시 뿌리기로 바꿔야함.
 	}
 	
-	
 	//검색	//to-do
 	@GetMapping("/search")
 	public String searchTitle(@RequestParam(defaultValue="title") String title, Model model){
 		List<BoardVO> boardVO = boardService.searchTitle(title);
 		model.addAttribute("boardVO",boardVO);
-		return "redirect:/board/list";
+		return "home";
 	}
 	
 	
