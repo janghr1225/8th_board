@@ -1,9 +1,5 @@
 package com.example.board3.boardList;
 
-import java.util.Date;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
 import lombok.Builder;
 import lombok.Data;
 

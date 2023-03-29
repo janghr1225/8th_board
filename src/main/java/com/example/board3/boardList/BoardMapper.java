@@ -20,5 +20,7 @@ public interface BoardMapper {
 
 	List<BoardVO> searchTitle(String title);
 
+	void deleteMulti(String boardNum);
+
 	
 }

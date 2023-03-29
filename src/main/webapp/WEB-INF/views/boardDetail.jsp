@@ -10,7 +10,7 @@
 <body>
 	<table>
 		<colgroup>
-			<col width="250px" />
+			<col width="200px" />
 			<col />
 		</colgroup>
 		<tbody>
@@ -33,13 +33,11 @@
 		</tbody>
 	</table>
 	
-	<button onclick="openPop()">수정하기</button>
+	<button onclick="location.href='/board/update/${boardVO.boardNum}'">수정하기</button>
 
 	<script type="text/javascript">
-	 	function openPop() {
-			var pop = window.open('/board/update/'+ ${boardVO.boardNum},'수정하기','width=600,height=600,left=10,top=10');
-		} 
-	
+	 	
+		
 	</script>
 </body>
 

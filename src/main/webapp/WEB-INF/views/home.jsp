@@ -20,7 +20,7 @@
 			<input type="submit" value="검색"/>
 		</form>
 		
-		<button type="button" id="deleteBoardId" name="deletBoard" class="delMulti">선택삭제</button>
+		<button type="button" id="deleteBoardId" name="deletBoard" class="delMulti" onclick="delMulti()">선택삭제</button>
 		<button onclick="openPop('/board/insertPopup')" name = "boardBtn">게시글 등록하기</button>
 		
 		<table border="1">
@@ -42,7 +42,7 @@
 						<td><a onclick="openPop('/board/list/${n.boardNum}')">${n.title}</a></td>
 						<td>${n.userName}</td>
 						<td>${n.creDate}</td>
-						<td><a href="/board/delete/${n.boardNum}">삭제</a></td>
+						<td><a href="/board/delete/${n.boardNum}">삭제</a></td>	<!-- to-do : button으로 바꾸기 -->
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -61,7 +61,7 @@
 	 	}
 	 	
 	 	//checkbox 전체선택
- 		$("#allCheckId").click(function(){
+  		$("#allCheckId").click(function(){
  			if($("#allCheckId").is(":checked")){
  				$("input[name=oneCheck]").prop("checked", true);
  			}else{
@@ -75,8 +75,47 @@
 
 			if(total != checked) $("#allCheckId").prop("checked", false);
 			else $("#allCheckId").prop("checked", true); 
- 		});
-	 	 	
+ 		}); 
+
+	 	//체크박스 선택 삭제 delMulti()
+	 	function delMulti(){
+	 		
+	 		var url = "/delete";
+	 		var valueArr = new Array();
+	 		var list = $("input[name='oneCheck']");
+	 		
+	 		for(var i = 0; i < list.length; i++){
+	 			if(list[i].checked){
+	 				valueArr.push(list[i].value);
+	 			}
+	 		}
+	 		
+	 		if(valueArr.length == 0){
+	 			alert("삭제할 글을 선택하세요.");
+	 		}else{
+	 			var chk = confirm("정말 삭제하시겠습니까?");	//alert(?)
+	 			$.ajax({
+	 				url : url,
+	 				type : 'post',
+	 				traditional : true,
+	 				data : {
+	 					valueArr : valueArr //보내려는 데이터 변수 설정
+	 				},
+	 				success : function(jdata){
+	 					if(jdata = 1){
+	 						alert("삭제되었습니다.");
+	 						location.replace("/board/list");
+	 					}else{
+	 						alert("삭제에 실패하였습니다.");
+	 					}
+	 				}
+	 			});
+	 		}
+	 		
+	 	}//end delMulti()
+	 	
+	 	
+	 	
 	</script>
 </body>
 

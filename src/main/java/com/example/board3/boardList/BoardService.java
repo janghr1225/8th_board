@@ -37,4 +37,9 @@ public class BoardService {
 		return boardMapper.searchTitle(title);
 	}
 
+	public void deleteMulti(String boardNum) {
+		boardMapper.deleteMulti(boardNum);
+	}
+
+
 }

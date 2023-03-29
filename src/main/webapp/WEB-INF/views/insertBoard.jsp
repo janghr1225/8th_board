@@ -24,11 +24,9 @@
 			<label for="content">내용</label>
 			<textarea name="content"></textarea>
 		</div>
-		
 	</form>
 	
 	<button id="send">등록</button>
-	<!-- 동기 처리 비동기처리 => submit을 눌렀을 떄 onclic 함수 실행이 먼저인지 아니면 submit이 먼저인지, 그 실행 순서는 항상 보장 되는지 -->
 	
 	<script>
 		function register() {
@@ -42,13 +40,13 @@
 					title : $("input[name=title]").val()
 			}
 			
-			$.ajax({		/* 비동기처리 */
+			$.ajax({
 				type : 'post',
 				url : '/board/insert',
 				data : JSON.stringify(formData),
 				contentType: "application/json; charset=utf-8;",
 				success : function() {
-					console.log("success")
+					console.log("success");
 					window.opener.rendering();
 					window.close();
 				},
