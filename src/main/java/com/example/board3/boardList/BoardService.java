@@ -1,5 +1,6 @@
 package com.example.board3.boardList;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,8 @@ public class BoardService {
 		return boardMapper.searchTitle(title);
 	}
 
-	public void deleteMulti(String boardNum) {
-		boardMapper.deleteMulti(boardNum);
+	public int deleteMulti(ArrayList<Integer> boardNum) {
+		return boardMapper.deleteMulti(boardNum);
 	}
 
 

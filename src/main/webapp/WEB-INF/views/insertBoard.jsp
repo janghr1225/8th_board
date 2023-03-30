@@ -46,6 +46,7 @@
 				data : JSON.stringify(formData),
 				contentType: "application/json; charset=utf-8;",
 				success : function() {
+					alert("저장되었습니다.");
 					console.log("success");
 					window.opener.rendering();
 					window.close();

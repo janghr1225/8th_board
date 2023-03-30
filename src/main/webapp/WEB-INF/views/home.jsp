@@ -37,7 +37,7 @@
 			<tbody>
 				<c:forEach var="n" items="${board}" varStatus="status">
 					<tr>
-						<td><input type="checkbox" name="oneCheck" id="oneCheckId" class="check" ></td>
+						<td><input type="checkbox" name="oneCheck" id="${n.boardNum}" class="check" ></td>
 						<td>${board.size() - status.count + 1}</td>
 						<td><a onclick="openPop('/board/list/${n.boardNum}')">${n.title}</a></td>
 						<td>${n.userName}</td>
@@ -78,29 +78,32 @@
  		}); 
 
 	 	//체크박스 선택 삭제 delMulti()
-	 	function delMulti(){
+ 	 	function delMulti(){
 	 		
-	 		var url = "/delete";
+	 		var url = "/board/delete";
 	 		var valueArr = new Array();
 	 		var list = $("input[name='oneCheck']");
 	 		
 	 		for(var i = 0; i < list.length; i++){
 	 			if(list[i].checked){
-	 				valueArr.push(list[i].value);
+	 				valueArr.push(list[i].id);
 	 			}
 	 		}
+	 		
+	 		const listData = {
+	 			boardNum : valueArr
+	 		}
+	 		
+	 		console.log(listData);
 	 		
 	 		if(valueArr.length == 0){
 	 			alert("삭제할 글을 선택하세요.");
 	 		}else{
-	 			var chk = confirm("정말 삭제하시겠습니까?");	//alert(?)
+	 			var chk = confirm("정말 삭제하시겠습니까?");	//확인 or 취소
 	 			$.ajax({
 	 				url : url,
 	 				type : 'post',
-	 				traditional : true,
-	 				data : {
-	 					valueArr : valueArr //보내려는 데이터 변수 설정
-	 				},
+	 				data : listData,
 	 				success : function(jdata){
 	 					if(jdata = 1){
 	 						alert("삭제되었습니다.");
@@ -111,8 +114,7 @@
 	 				}
 	 			});
 	 		}
-	 		
-	 	}//end delMulti()
+	 	}//end delMulti() 
 	 	
 	 	
 	 	

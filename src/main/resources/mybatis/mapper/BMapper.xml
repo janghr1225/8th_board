@@ -36,17 +36,20 @@
    	  WHERE boardNum = #{boardNum}
    </delete>
    
-<!--    <delete id="deleteMulti" parameterType="">
-   	 DELETE FROM board
-   	 
-   </delete> -->
+   <delete id="deleteMulti">
+			DELETE FROM board
+			WHERE boardNum IN
+		<foreach item="boardNum" collection="list" open="(" separator="," close=")">			
+			#{boardNum}
+		</foreach>
+	</delete>
    
-   <select id="searchTitle" parameterType="String">
+<!--    <select id="searchTitle" parameterType="String">
    	  SELECT boardNum,userName,title,content,creDate 
    	  FROM board
    	  WHERE
    	  title LIKE CONCAT('%',#{title},'%')
    	  ORDER BY boardNum DESC
-   </select>
+   </select> -->
 
 </mapper>

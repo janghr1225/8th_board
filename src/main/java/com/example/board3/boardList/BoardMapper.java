@@ -1,5 +1,6 @@
 package com.example.board3.boardList;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -20,7 +21,7 @@ public interface BoardMapper {
 
 	List<BoardVO> searchTitle(String title);
 
-	void deleteMulti(String boardNum);
+	int deleteMulti(ArrayList<Integer> boardNum);
 
 	
 }

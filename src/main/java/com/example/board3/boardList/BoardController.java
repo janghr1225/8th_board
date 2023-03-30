@@ -1,6 +1,7 @@
 package com.example.board3.boardList;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/board")
@@ -80,16 +82,10 @@ public class BoardController {
 		boardService.deleteBoard(boardNum);
 		return "redirect:/board/list"; 
 	}
-	//다중 삭제	//to-do
+	//다중 삭제
 	@PostMapping("/delete")
-	public String deleteMulti(HttpServletRequest request) {
-		
-		String[] multi = request.getParameterValues("valueArr");
-		int size = multi.length;
-		
-		for(int i=0; i<size; i++) {
-			boardService.deleteMulti(multi[i]);
-		}
+	public String deleteMulti(Model model, @RequestParam(value="boardNum[]") ArrayList<Integer> boardNum) {
+		boardService.deleteMulti(boardNum);
 		return "redirect:/board/list";
 	}
 	
