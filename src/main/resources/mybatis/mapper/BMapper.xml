@@ -37,19 +37,27 @@
    </delete>
    
    <delete id="deleteMulti">
-			DELETE FROM board
-			WHERE boardNum IN
-		<foreach item="boardNum" collection="list" open="(" separator="," close=")">			
-			#{boardNum}
-		</foreach>
+	 DELETE FROM board
+	 WHERE boardNum IN
+	 <foreach item="boardNum" collection="list" open="(" separator="," close=")">#{boardNum}</foreach>
 	</delete>
+   <!-- IN : where절 안에서 여러개 값을 선택할 수 있는 연산자 -->
    
-<!--    <select id="searchTitle" parameterType="String">
-   	  SELECT boardNum,userName,title,content,creDate 
-   	  FROM board
-   	  WHERE
-   	  title LIKE CONCAT('%',#{title},'%')
-   	  ORDER BY boardNum DESC
+<!--    <select id="searchList" parameterType="BaordVO" resultType="BaordVO">
+   	 SELECT boardNum,userName,title,content,creDate 
+     FROM board
+     <choose>
+     	<when test="type != null and type.equals('title')" >
+     		AND title 
+     		LIKE CONCAT('%', #{keyword}, '%')
+     	</when>
+     	
+     	<when test="type != null and type.equals('userName')" >
+     		AND userName 
+     		LIKE CONCAT('%', #{keyword}, '%')
+     	</when>
+     </choose>   	 
    </select> -->
+   
 
 </mapper>

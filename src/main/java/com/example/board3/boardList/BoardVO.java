@@ -12,5 +12,7 @@ public class BoardVO {
 	private String title;
 	private String content;
 	private String creDate;
-		
+	
+//	private String type;	//select option
+//	private String keyword;	//검색어
 }

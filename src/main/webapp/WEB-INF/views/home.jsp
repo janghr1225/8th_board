@@ -16,8 +16,8 @@
 				<option value="title">제목</option>
 				<option value="userName">작성자</option>
 			</select>
-			<input type="text" name="q" placeholder="검색어를 입력하세요" value="">
-			<input type="submit" value="검색"/>
+			<input type="text" name="q" placeholder="검색어를 입력하세요" value=""/>
+			<input type="button" onclick="searchList()" value="검색"/>
 		</form>
 		
 		<button type="button" id="deleteBoardId" name="deletBoard" class="delMulti" onclick="delMulti()">선택삭제</button>
@@ -115,7 +115,15 @@
 	 			});
 	 		}
 	 	}//end delMulti() 
-	 	
+ 	 	
+	 	//게시글 검색 searchList()
+	 	function searchList(){
+	 		$.ajax({
+	 			type:"GET",
+	 			
+	 		})
+	 	}//end searchList()
+	 	 
 	 	
 	 	
 	</script>

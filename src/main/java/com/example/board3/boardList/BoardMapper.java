@@ -14,14 +14,16 @@ public interface BoardMapper {
 
 	void insertBoard(BoardVO boardVO);
 
-//	String updateBoard(BoardVO boardVO);
 	void updateBoard(BoardVO boardVO);
 
 	void deleteBoard(Integer boardNum);
 
-	List<BoardVO> searchTitle(String title);
-
 	int deleteMulti(ArrayList<Integer> boardNum);
+
+	List<BoardVO> searchList(BoardVO boardVO);
+	
+
+
 
 	
 }

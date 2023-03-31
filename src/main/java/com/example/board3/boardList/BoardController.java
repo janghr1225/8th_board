@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/board")
@@ -84,17 +85,18 @@ public class BoardController {
 	}
 	//다중 삭제
 	@PostMapping("/delete")
-	public String deleteMulti(Model model, @RequestParam(value="boardNum[]") ArrayList<Integer> boardNum) {
+	public String deleteMulti(@RequestParam(value="boardNum[]") ArrayList<Integer> boardNum) {
 		boardService.deleteMulti(boardNum);
 		return "redirect:/board/list";
 	}
 	
 	//검색	//to-do
 //	@GetMapping("/search")
-//	public String searchTitle(@RequestParam(defaultValue="title") String title, Model model){
-//		List<BoardVO> boardVO = boardService.searchTitle(title);
-//		model.addAttribute("boardVO",boardVO);
-//		return "home";
+//	@ResponseBody	//응답
+//	public List<BoardVO> searchTitle(@RequestParam(value="type") String type,
+//								@RequestParam(value="keyword") String keyword, Model model){
+//		
+//		return boardService.searchList(boardVO);
 //	}
 
 }

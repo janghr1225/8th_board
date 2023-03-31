@@ -33,13 +33,13 @@ public class BoardService {
 	public void deleteBoard(Integer boardNum) {
 		boardMapper.deleteBoard(boardNum);
 	}
-
-	public List<BoardVO> searchTitle(String title) {
-		return boardMapper.searchTitle(title);
-	}
-
+	
 	public int deleteMulti(ArrayList<Integer> boardNum) {
 		return boardMapper.deleteMulti(boardNum);
+	}
+
+	public List<BoardVO> searchList(BoardVO boardVO) {
+		return boardMapper.searchList(boardVO);
 	}
 
 
